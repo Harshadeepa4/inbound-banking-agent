@@ -42,7 +42,7 @@ cd inbound-banking-agent
 * Use the **base URL** from your workspace:
 
 ```
-https://<your-beeceptor-base-url>
+https://wisdomloop-bank.free.beeceptor.com/
 ```
 
 * Each scenario has its endpoint:
