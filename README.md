@@ -1,86 +1,113 @@
-# Bank Mock API Documentation for Inya.ai Integration
+Inbound Banking Support Agent
 
-This repository contains mock API documentation for 20 banking scenarios created using Beeceptor. This README explains how to use the documentation and endpoints in Inya.ai.
+Team: Wisdom Loop
+Date: 30.09.2025
 
----
+Project Overview
 
-## **1. Repository Contents**
+This project implements an AI Banking Support Agent using Inya.ai and Beeceptor mock APIs. The agent can:
 
-* `Bank_Mock_API_Doc.docx`: Word document containing:
+Provide account information (balance, transactions, KYC, loans)
 
-  * 20 mock endpoints
-  * HTTP methods (GET/POST)
-  * JSON responses for each scenario
-  * Variables to extract for Inya.ai integration
+Manage cards (block, disputes)
 
-* Base URL for Beeceptor: `https://wisdomloop-bank.free.beeceptor.com/`
+Handle complaints
 
----
+Locate branches/ATMs
 
-## **2. How to Use This in Inya.ai**
+Escalate complex queries to a live agent
 
-### Step 1: Open Inya.ai
+Support multilingual responses (English & Hindi)
 
-* Log in to your Inya.ai account.
-* Navigate to **Actions / API Integrations / Custom API**.
+All API calls use mock endpoints on Beeceptor, so no real banking data is used.
 
-### Step 2: Add Each API Endpoint
+Repository Contents
 
-For each of the 20 scenarios:
+Bank_Mock_API_Doc.docx → 20 scenarios with JSON responses
 
-1. Click **Add API / Create Action**.
-2. Fill in the following fields:
+Concept_Note.docx → Project concept, objectives, and methodology
 
-| Field              | Value Example                           |
-| ------------------ | --------------------------------------- |
-| Name / Description | e.g., `Get Account Balance`             |
-| Method             | GET (or POST if specified)              |
-| URL                | `https://<beeceptor-base-url>/balance`  |
-| Headers            | `Content-Type: application/json`        |
-| Body / Parameters  | Only if required (usually GET has none) |
-| Response Variables | See Word doc for variable mapping       |
+README.md → Setup and usage instructions
 
-### Step 3: Map Response Variables
+Setup & Run Instructions
+1. Clone Repository
+git clone https://github.com/<username>/inbound-banking-agent.git
+cd inbound-banking-agent
 
-Use the JSON paths provided in the Word document to map API response fields to Inya.ai agent variables. Examples:
+2. Use Beeceptor Mock APIs
 
-```
-{{body.account}} -> account_number
-{{body.balance}} -> balance
-{{body.date}} -> as_of_date
-{{body.message}} -> message
-```
+Open Beeceptor: https://beeceptor.com
 
-### Step 4: Connect Endpoint to Intent
+Use the base URL from your workspace:
 
-* Map each API action to the corresponding **intent** in your chatbot.
-* Example:
+https://wisdomloop-bank.free.beeceptor.com/
 
-  * Intent: `Check Balance` → Action: `/balance`
-  * Intent: `Raise Dispute` → Action: `/raise_dispute`
 
-### Step 5: Test Each Scenario
+Each scenario has its endpoint:
 
-* Open the **chat simulator** in Inya.ai.
-* Trigger each intent and verify that:
+Scenario	Endpoint
+Account Balance	/balance
+Last 5 Transactions	/transactions
+Block My Card	/block_card
+Block Card Ending 9012	/block_card_confirm
+Raise a Dispute	/raise_dispute
+Complaint Status	/check_complaint
+I Want to Complain	/create_complaint
+Nearest Branch	/find_branch
+ATM Near Pincode	/find_atm
+KYC Status	/check_kyc
+Cheque Status	/check_cheque
+FD Rates	/fd_rates
+Loan Status	/check_loan
+Speak to Agent	/escalate_to_agent
+Card Problem Ambiguous	/card_issue_ambiguous
+Balance in Hindi	/balance_hi
+Branch in Fort Mumbai Two Options	/choose_branch_fort
+Dispute for Transaction Not Found	/dispute_not_found
+API Timeout on Balance	/balance_timeout
+Frustrated User	/escalate_frustration
+3. Configure Inya.ai Actions
 
-  * The correct endpoint is called.
-  * The AI agent responds with the correct message.
-  * All variables are mapped correctly.
+Log in to Inya.ai.
 
-### Step 6: Maintain and Update
+Go to Actions → API Integrations → Create Action.
 
-* If any changes are made to the mock APIs in Beeceptor, update the Word document.
-* Share the updated repo with your team so everyone stays in sync.
+For each scenario:
 
----
+Name: e.g., Get Account Balance
 
-## **3. Notes**
+Method: GET (or POST if required)
 
-* **Base URL**: Share the Beeceptor base URL with your team. They can append each endpoint from the doc.
-* **Testing**: Make sure all GET/POST methods are consistent with the Word doc.
-* **Dynamic Responses**: You can enable dynamic response rules in Beeceptor if needed for advanced scenarios.
+URL: https://<beeceptor-base-url>/balance
 
----
+Headers: Content-Type: application/json
 
-By following this guide and using the provided document, your team can fully integrate the mock banking APIs into Inya.ai with minimal setup.
+Map response fields to variables:
+
+Variable Name	JSON Path
+account_number	{{body.account}}
+balance	{{body.balance}}
+as_of_date	{{body.date}}
+message	{{body.message}}
+
+Repeat variable mapping for other endpoints as defined in your Word doc.
+
+4. Test the Agent
+
+Use Inya.ai simulator:
+
+Trigger intents for all 20 scenarios.
+
+Verify correct response mapping.
+
+Ensure bot prompts for missing info (e.g., last 4 digits of card).
+
+Test escalation to live agent for complex or abusive queries.
+
+5. Environment Requirements
+
+Inya.ai account
+
+Beeceptor account
+
+No local backend required
