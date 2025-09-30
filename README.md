@@ -13,7 +13,7 @@ This repository contains mock API documentation for 20 banking scenarios created
   * JSON responses for each scenario
   * Variables to extract for Inya.ai integration
 
-* Base URL for Beeceptor: `https://<your-beeceptor-base-url>`
+* Base URL for Beeceptor: `https://wisdomloop-bank.free.beeceptor.com/`
 
 ---
 
