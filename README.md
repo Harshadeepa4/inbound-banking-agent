@@ -1,7 +1,6 @@
 # Inbound Banking Support Agent
 
 **Team:** Wisdom Loop
-**Date:** 30.09.2025
 
 ---
 
@@ -111,4 +110,4 @@ https://<your-beeceptor-base-url>
 
 * All endpoints are **mock APIs**; no real banking data is used.
 * Follow the **Bank_Mock_API_Doc.docx** for example responses and testing.
-* Share the **Beeceptor base URL** with teammates to allow integration.
+
